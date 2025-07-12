@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}글 삭제 - 게시판{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h3>글 삭제</h3>
+            </div>
+            <div class="card-body">
+                <p>정말로 "<strong>{{ post.title }}</strong>" 글을 삭제하시겠습니까?</p>
+                <p class="text-muted">삭제된 글은 복구할 수 없습니다.</p>
+                
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="d-flex justify-content-between">
+                        <a href="{% url 'board:post_detail' post.pk %}" class="btn btn-secondary">취소</a>
+                        <button type="submit" class="btn btn-danger">삭제하기</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
